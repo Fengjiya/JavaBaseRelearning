@@ -1,0 +1,34 @@
+// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
+// Jad home page: http://www.kpdus.com/jad.html
+// Decompiler options: packimports(3) 
+// Source File Name:   BreakTest2.java
+
+import java.io.PrintStream;
+
+public class BreakTest2
+{
+
+    public BreakTest2()
+    {
+    }
+
+    public static void main(String args[])
+    {
+        int i = 0;
+label0:
+        do
+        {
+            if(i >= 20)
+                break;
+            for(int j = 0; j < 10; j++)
+            {
+                System.out.println((new StringBuilder()).append("i= ").append(i).append("  j= ").append(j).toString());
+                if(j == 1)
+                    break label0;
+            }
+
+            System.out.println("Back to for:i !");
+            i++;
+        } while(true);
+    }
+}

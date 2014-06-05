@@ -1,0 +1,5 @@
+Compiled from "BreakTest2.java"
+public class BreakTest2 {
+  public BreakTest2();
+  public static void main(java.lang.String[]);
+}

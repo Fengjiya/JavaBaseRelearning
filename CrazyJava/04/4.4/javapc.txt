@@ -1,0 +1,47 @@
+Compiled from "BreakTest2.java"
+public class BreakTest2 {
+  public BreakTest2();
+    Code:
+       0: aload_0       
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return        
+
+  public static void main(java.lang.String[]);
+    Code:
+       0: iconst_0      
+       1: istore_1      
+       2: iload_1       
+       3: bipush        20
+       5: if_icmpge     78
+       8: iconst_0      
+       9: istore_2      
+      10: iload_2       
+      11: bipush        10
+      13: if_icmpge     64
+      16: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+      19: new           #3                  // class java/lang/StringBuilder
+      22: dup           
+      23: invokespecial #4                  // Method java/lang/StringBuilder."<init>":()V
+      26: ldc           #5                  // String i= 
+      28: invokevirtual #6                  // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      31: iload_1       
+      32: invokevirtual #7                  // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+      35: ldc           #8                  // String   j= 
+      37: invokevirtual #6                  // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      40: iload_2       
+      41: invokevirtual #7                  // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+      44: invokevirtual #9                  // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      47: invokevirtual #10                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+      50: iload_2       
+      51: iconst_1      
+      52: if_icmpne     58
+      55: goto          78
+      58: iinc          2, 1
+      61: goto          10
+      64: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+      67: ldc           #11                 // String Back to for:i !
+      69: invokevirtual #10                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+      72: iinc          1, 1
+      75: goto          2
+      78: return        
+}

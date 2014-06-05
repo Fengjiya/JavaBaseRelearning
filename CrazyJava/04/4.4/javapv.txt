@@ -1,0 +1,132 @@
+Classfile /F:/Java/CrazyJava/TempleCode/04/BreakTest2.class
+  Last modified 2014-1-2; size 772 bytes
+  MD5 checksum dc3c3606e2060ce266e183e51d70ad9e
+  Compiled from "BreakTest2.java"
+public class BreakTest2
+  SourceFile: "BreakTest2.java"
+  minor version: 0
+  major version: 51
+  flags: ACC_PUBLIC, ACC_SUPER
+Constant pool:
+   #1 = Methodref          #13.#23        //  java/lang/Object."<init>":()V
+   #2 = Fieldref           #24.#25        //  java/lang/System.out:Ljava/io/PrintStream;
+   #3 = Class              #26            //  java/lang/StringBuilder
+   #4 = Methodref          #3.#23         //  java/lang/StringBuilder."<init>":()V
+   #5 = String             #27            //  i= 
+   #6 = Methodref          #3.#28         //  java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+   #7 = Methodref          #3.#29         //  java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+   #8 = String             #30            //    j= 
+   #9 = Methodref          #3.#31         //  java/lang/StringBuilder.toString:()Ljava/lang/String;
+  #10 = Methodref          #32.#33        //  java/io/PrintStream.println:(Ljava/lang/String;)V
+  #11 = String             #34            //  Back to for:i !
+  #12 = Class              #35            //  BreakTest2
+  #13 = Class              #36            //  java/lang/Object
+  #14 = Utf8               <init>
+  #15 = Utf8               ()V
+  #16 = Utf8               Code
+  #17 = Utf8               LineNumberTable
+  #18 = Utf8               main
+  #19 = Utf8               ([Ljava/lang/String;)V
+  #20 = Utf8               StackMapTable
+  #21 = Utf8               SourceFile
+  #22 = Utf8               BreakTest2.java
+  #23 = NameAndType        #14:#15        //  "<init>":()V
+  #24 = Class              #37            //  java/lang/System
+  #25 = NameAndType        #38:#39        //  out:Ljava/io/PrintStream;
+  #26 = Utf8               java/lang/StringBuilder
+  #27 = Utf8               i= 
+  #28 = NameAndType        #40:#41        //  append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+  #29 = NameAndType        #40:#42        //  append:(I)Ljava/lang/StringBuilder;
+  #30 = Utf8                 j= 
+  #31 = NameAndType        #43:#44        //  toString:()Ljava/lang/String;
+  #32 = Class              #45            //  java/io/PrintStream
+  #33 = NameAndType        #46:#47        //  println:(Ljava/lang/String;)V
+  #34 = Utf8               Back to for:i !
+  #35 = Utf8               BreakTest2
+  #36 = Utf8               java/lang/Object
+  #37 = Utf8               java/lang/System
+  #38 = Utf8               out
+  #39 = Utf8               Ljava/io/PrintStream;
+  #40 = Utf8               append
+  #41 = Utf8               (Ljava/lang/String;)Ljava/lang/StringBuilder;
+  #42 = Utf8               (I)Ljava/lang/StringBuilder;
+  #43 = Utf8               toString
+  #44 = Utf8               ()Ljava/lang/String;
+  #45 = Utf8               java/io/PrintStream
+  #46 = Utf8               println
+  #47 = Utf8               (Ljava/lang/String;)V
+{
+  public BreakTest2();
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0       
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return        
+      LineNumberTable:
+        line 2: 0
+
+  public static void main(java.lang.String[]);
+    flags: ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=3, locals=3, args_size=1
+         0: iconst_0      
+         1: istore_1      
+         2: iload_1       
+         3: bipush        20
+         5: if_icmpge     78
+         8: iconst_0      
+         9: istore_2      
+        10: iload_2       
+        11: bipush        10
+        13: if_icmpge     64
+        16: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+        19: new           #3                  // class java/lang/StringBuilder
+        22: dup           
+        23: invokespecial #4                  // Method java/lang/StringBuilder."<init>":()V
+        26: ldc           #5                  // String i= 
+        28: invokevirtual #6                  // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        31: iload_1       
+        32: invokevirtual #7                  // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+        35: ldc           #8                  // String   j= 
+        37: invokevirtual #6                  // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        40: iload_2       
+        41: invokevirtual #7                  // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+        44: invokevirtual #9                  // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+        47: invokevirtual #10                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+        50: iload_2       
+        51: iconst_1      
+        52: if_icmpne     58
+        55: goto          78
+        58: iinc          2, 1
+        61: goto          10
+        64: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+        67: ldc           #11                 // String Back to for:i !
+        69: invokevirtual #10                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+        72: iinc          1, 1
+        75: goto          2
+        78: return        
+      LineNumberTable:
+        line 8: 0
+        line 11: 8
+        line 13: 16
+        line 14: 50
+        line 17: 55
+        line 11: 58
+        line 20: 64
+        line 8: 72
+        line 22: 78
+      StackMapTable: number_of_entries = 5
+           frame_type = 252 /* append */
+             offset_delta = 2
+        locals = [ int ]
+           frame_type = 252 /* append */
+             offset_delta = 7
+        locals = [ int ]
+           frame_type = 47 /* same */
+           frame_type = 250 /* chop */
+          offset_delta = 5
+           frame_type = 250 /* chop */
+          offset_delta = 13
+
+}

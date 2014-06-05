@@ -1,0 +1,59 @@
+// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
+// Jad home page: http://www.kpdus.com/jad.html
+// Decompiler options: packimports(3) 
+// Source File Name:   Num2Rmb.java
+
+import java.io.PrintStream;
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Num2Rmb
+{
+
+    public Num2Rmb()
+    {
+    }
+
+    private String[] divide(double d)
+    {
+        long l = (long)d;
+        long l1 = Math.round((d - (double)l) * 100D);
+        return (new String[] {
+            (new StringBuilder()).append(l).append("").toString(), String.valueOf(l1)
+        });
+    }
+
+    private String toHanStr(String s)
+    {
+        String s1 = "";
+        int i = s.length();
+        for(int j = 0; j < i; j++)
+        {
+            int k = s.charAt(j) - 48;
+            if(k != 0)
+                s1 = (new StringBuilder()).append(s1).append(hanArr[k]).append(unitArr[i - j - 1]).toString();
+        }
+
+        return s1;
+    }
+
+    public static void main(String args[])
+    {
+        Scanner scanner = new Scanner(System.in);
+        Num2Rmb num2rmb = new Num2Rmb();
+        System.out.println("\u8F93\u5165\u8981\u5206\u89E3\u7684double\u6570\u548C\u56DB\u4F4D\u6574\u6570\uFF1A");
+        System.out.print("\u5206\u89E3\u6570:");
+        double d = scanner.nextDouble();
+        System.out.print("\u56DB\u4F4D\u6574\u6570: ");
+        String s = scanner.next();
+        System.out.println(Arrays.toString(num2rmb.divide(d)));
+        System.out.println((new StringBuilder()).append(s).append("= ").append(num2rmb.toHanStr(s)).toString());
+    }
+
+    private String hanArr[] = {
+        "\u96F6", "\u58F9", "\u8D30", "\u53C1", "\u8086", "\u4F0D", "\u9646", "\u67D2", "\u634C", "\u7396"
+    };
+    private String unitArr[] = {
+        "", "\u62FE", "\u4F70", "\u4EDF"
+    };
+}

@@ -1,0 +1,5 @@
+Compiled from "ForeachTest.java"
+public class ForeachTest {
+  public ForeachTest();
+  public static void main(java.lang.String[]);
+}

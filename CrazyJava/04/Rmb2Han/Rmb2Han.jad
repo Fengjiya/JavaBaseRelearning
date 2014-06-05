@@ -1,0 +1,110 @@
+// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
+// Jad home page: http://www.kpdus.com/jad.html
+// Decompiler options: packimports(3) 
+// Source File Name:   Rmb2Han.java
+
+import java.io.PrintStream;
+import java.util.Scanner;
+
+public class Rmb2Han
+{
+
+    public Rmb2Han()
+    {
+    }
+
+    private String[] divide(double d)
+    {
+        long l = (long)d;
+        String s = (new StringBuilder()).append(d - (double)l).append("").toString();
+        String s1 = s.substring(0, 3);
+        String as[] = new String[2];
+        as[0] = (new StringBuilder()).append(l).append("").toString();
+        as[1] = s1;
+        return as;
+    }
+
+    private String toHan(String as[])
+    {
+        String s = as[0];
+        String s1 = as[1];
+        String s2 = "";
+        int i = s.length();
+        if(i <= 4)
+            s2 = (new StringBuilder()).append(s2).append(intConverter(s)).toString();
+        else
+        if(i <= 8)
+        {
+            String s3 = s.substring(0, i - 4);
+            String s5 = s.substring(i - 4, i);
+            s2 = (new StringBuilder()).append(s2).append(intConverter(s3)).append("\u4E07").append(intConverter(s5)).toString();
+        } else
+        if(i <= 12)
+        {
+            String s4 = s.substring(0, i - 8);
+            String s6 = s.substring(i - 8, i - 4);
+            String s7 = s.substring(i - 4, i);
+            s2 = (new StringBuilder()).append(s2).append(intConverter(s4)).append("\u4EBF").append(intConverter(s6)).append("\u4E07").append(intConverter(s7)).toString();
+        } else
+        {
+            System.out.println("\u8F93\u5165\u7684\u6570\u5B57\u592A\u5927\uFF0C\u6574\u6570\u90E8\u5206\u4E0D\u5E94\u8BE5\u957F\u4E8E12\u4F4D\uFF01");
+            return "";
+        }
+        s2 = (new StringBuilder()).append(s2).append("\u5143\u6574").toString();
+        return s2;
+    }
+
+    private String intConverter(String s)
+    {
+        String s1 = "";
+        int i = s.length();
+        for(int j = 0; j < i; j++)
+        {
+            int k = s.charAt(j) - 48;
+            if(k != 0)
+                s1 = (new StringBuilder()).append(s1).append(numArr[k]).append(unitArr[(i - j) + 2]).toString();
+        }
+
+        return s1;
+    }
+
+    private String douConverter(String s)
+    {
+        String s1 = "";
+        int i = s.charAt(0) - 48;
+        if(i != 0)
+            s1 = (new StringBuilder()).append(s1).append(numArr[i]).append(unitArr[2]).toString();
+        int j = s.charAt(1) - 48;
+        if(j != 0)
+            s1 = (new StringBuilder()).append(s1).append(numArr[j]).append(unitArr[1]).toString();
+        int k = s.charAt(2) - 48;
+        if(k != 0)
+            s1 = (new StringBuilder()).append(s1).append(numArr[k]).append(unitArr[0]).toString();
+        return s1;
+    }
+
+    public String RmbToHan(double d)
+    {
+        String as[] = new String[2];
+        as = divide(d);
+        String s = toHan(as);
+        return s;
+    }
+
+    public static void main(String args[])
+    {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("\u8BF7\u8F93\u5165\u4F60\u8981\u8F6C\u5316\u7684\u6570\u5B57: ");
+        double d = scanner.nextDouble();
+        Rmb2Han rmb2han = new Rmb2Han();
+        String s = rmb2han.RmbToHan(d);
+        System.out.println(s);
+    }
+
+    private final String numArr[] = {
+        "\u96F6", "\u58F9", "\u8D30", "\u53C1", "\u8086", "\u4F0D", "\u9646", "\u67D2", "\u634C", "\u7396"
+    };
+    private final String unitArr[] = {
+        "\u5398", "\u5206", "\u89D2", "", "\u62FE", "\u4F70", "\u4EDF", "\u4E07", "\u4EBF"
+    };
+}
