@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.image.*;
 import javax.imageio.*;
 
-public class ZoomImage
+public class ImageViewer
 {
 	//下面两个常量设置缩小后图片的大小
 	private final int WIDTH = 500;
@@ -27,7 +27,7 @@ public class ZoomImage
 	
 	public static void main( String[] args ) throws Exception
 	{
-		new ZoomImage().zoom();
+		new ImageViewer().zoom();
 	}
 	
 }
