@@ -14,17 +14,15 @@
 // limitations under the License.
 
 // ============================================================================
-// catalina.policy - Security Policy Permissions for Tomcat 7
+// catalina.policy - Security Policy Permissions for Tomcat
 //
 // This file contains a default set of security policies to be enforced (by the
 // JVM) when Catalina is executed with the "-security" option.  In addition
 // to the permissions granted here, the following additional permissions are
-// granted specific to each web application:
+// granted to each web application:
 //
-// * Read access to its document root directory
-// * Read, write and delete access to its working directory
-//
-// $Id: catalina.policy 981453 2010-08-02 11:00:51Z markt $
+// * Read access to the web application's document root directory
+// * Read, write and delete access to the web application's working directory
 // ============================================================================
 
 
@@ -67,7 +65,7 @@ grant codeBase "file:${catalina.home}/bin/commons-daemon.jar" {
 //  grant codeBase "file:${catalina.base}/bin/tomcat-juli.jar" {..}
 grant codeBase "file:${catalina.home}/bin/tomcat-juli.jar" {
         permission java.io.FilePermission
-         "${java.home}${file.separator}lib${file.separator}logging.properties", "read"; 
+         "${java.home}${file.separator}lib${file.separator}logging.properties", "read";
 
         permission java.io.FilePermission
          "${catalina.base}${file.separator}conf${file.separator}logging.properties", "read";
@@ -80,16 +78,23 @@ grant codeBase "file:${catalina.home}/bin/tomcat-juli.jar" {
         permission java.lang.RuntimePermission "getClassLoader";
         permission java.lang.RuntimePermission "setContextClassLoader";
 
+        permission java.lang.management.ManagementPermission "monitor";
+
         permission java.util.logging.LoggingPermission "control";
 
         permission java.util.PropertyPermission "java.util.logging.config.class", "read";
         permission java.util.PropertyPermission "java.util.logging.config.file", "read";
+        permission java.util.PropertyPermission "org.apache.juli.AsyncLoggerPollInterval", "read";
+        permission java.util.PropertyPermission "org.apache.juli.AsyncMaxRecordCount", "read";
+        permission java.util.PropertyPermission "org.apache.juli.AsyncOverflowDropType", "read";
+        permission java.util.PropertyPermission "org.apache.juli.ClassLoaderLogManager.debug", "read";
         permission java.util.PropertyPermission "catalina.base", "read";
 
         // Note: To enable per context logging configuration, permit read access to
         // the appropriate file. Be sure that the logging configuration is
         // secure before enabling such access.
-        // E.g. for the examples web application:
+        // E.g. for the examples web application (uncomment and unwrap
+        // the following to be on a single line):
         // permission java.io.FilePermission "${catalina.base}${file.separator}
         //  webapps${file.separator}examples${file.separator}WEB-INF
         //  ${file.separator}classes${file.separator}logging.properties", "read";
@@ -120,7 +125,7 @@ grant codeBase "file:${catalina.home}/lib/-" {
 
 // These permissions are granted by default to all web applications
 // In addition, a web application will be given a read FilePermission
-// and JndiPermission for all files and directories in its document root.
+// for all files and directories in its document root.
 grant {
     // Required for JNDI lookup of named JDBC DataSource's and
     // javamail named MimePart DataSource used to send mail
@@ -183,15 +188,32 @@ grant {
 
     // Applications using Comet need to be able to access this package
     permission java.lang.RuntimePermission "accessClassInPackage.org.apache.catalina.comet";
+
+    // Applications using WebSocket need to be able to access these packages
+    permission java.lang.RuntimePermission "accessClassInPackage.org.apache.tomcat.websocket";
+    permission java.lang.RuntimePermission "accessClassInPackage.org.apache.tomcat.websocket.server";
 };
 
 
 // The Manager application needs access to the following packages to support the
-// session display functionality
+// session display functionality. These settings support the following
+// configurations:
+// - default CATALINA_HOME == CATALINA_BASE
+// - CATALINA_HOME != CATALINA_BASE, per instance Manager in CATALINA_BASE
+// - CATALINA_HOME != CATALINA_BASE, shared Manager in CATALINA_HOME
 grant codeBase "file:${catalina.base}/webapps/manager/-" {
     permission java.lang.RuntimePermission "accessClassInPackage.org.apache.catalina";
+    permission java.lang.RuntimePermission "accessClassInPackage.org.apache.catalina.ha.session";
     permission java.lang.RuntimePermission "accessClassInPackage.org.apache.catalina.manager";
     permission java.lang.RuntimePermission "accessClassInPackage.org.apache.catalina.manager.util";
+    permission java.lang.RuntimePermission "accessClassInPackage.org.apache.catalina.util";
+};
+grant codeBase "file:${catalina.home}/webapps/manager/-" {
+    permission java.lang.RuntimePermission "accessClassInPackage.org.apache.catalina";
+    permission java.lang.RuntimePermission "accessClassInPackage.org.apache.catalina.ha.session";
+    permission java.lang.RuntimePermission "accessClassInPackage.org.apache.catalina.manager";
+    permission java.lang.RuntimePermission "accessClassInPackage.org.apache.catalina.manager.util";
+    permission java.lang.RuntimePermission "accessClassInPackage.org.apache.catalina.util";
 };
 
 // You can assign additional permissions to particular web applications by
