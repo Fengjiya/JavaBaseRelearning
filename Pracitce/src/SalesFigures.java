@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.math.BigDecimal;
 
 public class SalesFigures
 {
@@ -33,7 +34,7 @@ public class SalesFigures
 		//记录有几条记录
 		int tmp = sales.length;
 		//产生第一行
-		System.out.print(" \t" + "Sum\t" + "Avg\t");
+		System.out.print("\tSum\tAvg\t");
 		for( int i = 0; i < tmp; i++ )
 		{
 			System.out.print(MONTHS[i] + "\t" );
@@ -67,7 +68,9 @@ public class SalesFigures
 	
 	public static double Avg( double[] sales, int n )
 	{
-		return Sum(sales, n) / (n+1);
+		BigDecimal bd = new BigDecimal( Sum(sales, n) / (n+1) );
+		//Format the Avg to be '#.00'
+		return  bd.setScale( 2, BigDecimal.ROUND_HALF_UP).doubleValue();
 	}
 	
 	
