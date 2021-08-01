@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/CrazyJava/GuangPan/codes/project_codes/foxmail/lib/mail.jar!/" />
+      <root url="jar://$PROJECT_DIR$/CrazyJava/GuangPan/codes/project_codes/foxmail/lib/xpp3_min-1.1.4c.jar!/" />
+      <root url="jar://$PROJECT_DIR$/CrazyJava/GuangPan/codes/project_codes/foxmail/lib/xstream-1.3.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

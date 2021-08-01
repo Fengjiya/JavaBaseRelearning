@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="lib1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/CrazyJava/GuangPan/codes/project_codes/book(IoC)/lib/crazyit-ioc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/CrazyJava/GuangPan/codes/project_codes/book(IoC)/lib/mysql-connector-java-5.1.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/CrazyJava/GuangPan/codes/project_codes/book(IoC)/lib/dom4j-1.6.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

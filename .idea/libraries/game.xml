@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="game">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/CrazyJava/GuangPan/codes/project_codes/GameHall-Client/game/fivechess-client.jar!/" />
+      <root url="jar://$PROJECT_DIR$/CrazyJava/GuangPan/codes/project_codes/GameHall-Client/game/chatroom-client.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

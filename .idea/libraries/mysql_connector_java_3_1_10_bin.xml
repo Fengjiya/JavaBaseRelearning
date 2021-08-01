@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="mysql-connector-java-3.1.10-bin">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/CrazyJava/GuangPan/codes/18/18.2/mysql-connector-java-3.1.10-bin.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
