@@ -1,0 +1,5 @@
+方法1：
+ipconfig /flushdns
+
+方法2：
+git config --global http.sslVerify "false"
