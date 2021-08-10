@@ -1,7 +1,6 @@
 package SortAlgorithm;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.Random;
 
 public class SortingAlgorithm {
@@ -33,7 +32,6 @@ public class SortingAlgorithm {
         int minIndex;
         int cacheValue;
         for (int outerIndex = 0; outerIndex < noneOrderArray.length; outerIndex++) {
-            cacheValue = noneOrderArray[outerIndex];
             minIndex = outerIndex;
 
             for (int innerIndex = outerIndex + 1; innerIndex < noneOrderArray.length; innerIndex++) {
@@ -43,17 +41,46 @@ public class SortingAlgorithm {
 
             }
 
-            if (minIndex != outerIndex) {
-                noneOrderArray[outerIndex] = noneOrderArray[minIndex];
-                noneOrderArray[minIndex] = cacheValue;
-            }
+            swapArrayValue(noneOrderArray, minIndex, outerIndex);
 //            System.out.println("第" + (outerIndex + 1) + "次循环：" + Arrays.toString(noneOrderArray));
         }
 
         return noneOrderArray;
     }
 
+    private void swapArrayValue(int[] noneOrderArray, int srcIndex, int destIndex) {
+        int cacheValue;
+        if (srcIndex != destIndex) {
+            cacheValue = noneOrderArray[destIndex];
+            noneOrderArray[destIndex] = noneOrderArray[srcIndex];
+            noneOrderArray[srcIndex] = cacheValue;
+        }
+    }
+
+    public int[] BubbleSorting(int[] noneOrderArray) {
+        /*
+         * 时间复杂度：O(n²)
+         * 空间复杂度：O(1)
+         * */
+        if (noneOrderArray == null || noneOrderArray.length == 0) {
+            return null;
+        } else if (noneOrderArray.length == 1) {
+            return noneOrderArray;
+        }
+
+        for (int i = 0; i < noneOrderArray.length - 1; i++) {
+            for (int j = 0; j < noneOrderArray.length - i - 1; j++) {
+                if (noneOrderArray[j] > noneOrderArray[j + 1]) {
+                    swapArrayValue(noneOrderArray, j, j + 1);
+                }
+            }
+        }
+
+        return noneOrderArray;
+    }
+
     public void check() {
+        System.out.println("长度为" + arrayLength + "的数组，排序" + checkTimes + "次，开始排序...");
         long start = System.currentTimeMillis();
         for (int i = 0; i < checkTimes; i++) {
             int[] arr1 = randomArrayGenerator();
@@ -65,16 +92,17 @@ public class SortingAlgorithm {
             Arrays.equals(arr1, arr2);
 
 //            System.out.println("第" + (i + 1) + "次循环：" + (!Arrays.equals(arr1, arr2) ? "排序不相等" : "排序相等"));
-            ;
         }
 
-        System.out.println("合计耗时：" + (System.currentTimeMillis() - start) / 1000 + "S");
+        System.out.println("排序结束，合计耗时：" + (System.currentTimeMillis() - start) / 1000 + "S");
 
     }
 
     public static void main(String[] args) {
+        int[] array = {3, 5, 2, 8, 1};
         SortingAlgorithm sortingAlgorithm = new SortingAlgorithm();
         sortingAlgorithm.check();
+//        System.out.println(Arrays.toString(sortingAlgorithm.BubbleSorting(array)));
     }
 
 }
