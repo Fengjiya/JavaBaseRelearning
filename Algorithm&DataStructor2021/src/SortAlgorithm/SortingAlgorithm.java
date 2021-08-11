@@ -4,8 +4,8 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class SortingAlgorithm {
-    static final int ARRAY_LENGTH = 100000;
-    static final int CHECK_TIMES = 10;
+    static final int ARRAY_LENGTH = 1000000;
+    static final int CHECK_TIMES = 100;
 
     public int[] randomArrayGenerator() {
         Random random = new Random();
@@ -145,9 +145,35 @@ public class SortingAlgorithm {
 
             noneOrderArray = tmpArray;
             return noneOrderArray;
+        }
+    }
 
+    public int[] mergeSorting1(int[] noneOrderArray) {
+//        System.out.println("这是归并排序");
+        int middle = noneOrderArray.length / 2;
+
+
+        int[] tmpArray = new int[noneOrderArray.length];
+
+        int i = 0;
+        int j = middle + 1;
+        int k = 0;
+
+        for (; i < middle & j < noneOrderArray.length; k++) {
+            if (noneOrderArray[i] <= noneOrderArray[j]) {
+                tmpArray[k] = noneOrderArray[i];
+                i++;
+            } else {
+                tmpArray[k] = noneOrderArray[j];
+                j++;
+            }
         }
 
+        while (i < middle) noneOrderArray[k++] = noneOrderArray[i++];
+        while (j < noneOrderArray.length) noneOrderArray[k++] = noneOrderArray[j++];
+
+        noneOrderArray = tmpArray;
+        return noneOrderArray;
 
     }
 
@@ -159,7 +185,7 @@ public class SortingAlgorithm {
             int[] arr1 = randomArrayGenerator();
             int[] arr2 = Arrays.copyOf(arr1, arr1.length);
 
-            arr1 = mergeSorting(arr1);
+            arr1 = mergeSorting1(arr1);
             Arrays.sort(arr2);
 
             Arrays.equals(arr1, arr2);
