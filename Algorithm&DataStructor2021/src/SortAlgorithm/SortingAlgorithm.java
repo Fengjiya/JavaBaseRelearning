@@ -122,26 +122,13 @@ public class SortingAlgorithm {
             int j = 0;
             int k = 0;
 
-            for (; i < leftArray.length & j < rightArray.length; ) {
-                if (leftArray[i] <= rightArray[j]) {
-                    tmpArray[k] = leftArray[i];
-                    i++;
-                } else {
-                    tmpArray[k] = rightArray[j];
-                    j++;
-                }
-                k++;
+            while (i < leftArray.length && j < rightArray.length) {
+                tmpArray[k++] = leftArray[i] <= rightArray[j] ? leftArray[i++] : rightArray[j++];
             }
 
-            if (i == leftArray.length && j < rightArray.length) {
-                for (; j < rightArray.length; j++, k++) {
-                    tmpArray[k] = rightArray[j];
-                }
-            } else if (j == rightArray.length && i < leftArray.length) {
-                for (; i < leftArray.length; i++, k++) {
-                    tmpArray[k] = leftArray[i];
-                }
-            }
+            while (i < leftArray.length) tmpArray[k++] = leftArray[i++];
+            while (j < rightArray.length) tmpArray[k++] = rightArray[j++];
+
 
             noneOrderArray = tmpArray;
             return noneOrderArray;
@@ -180,10 +167,12 @@ public class SortingAlgorithm {
             int[] arr1 = randomArrayGenerator();
             int[] arr2 = Arrays.copyOf(arr1, arr1.length);
 
-            arr1 = mergeSorting1(arr1);
+            arr1 = mergeSorting(arr1);
             Arrays.sort(arr2);
 
-            Arrays.equals(arr1, arr2);
+            if (!Arrays.equals(arr1, arr2)) {
+                System.out.println("排序结果不一致!!!");
+            } else System.out.println("排序结果一致");
         }
 
         System.out.println("排序结束，合计耗时：" + (System.currentTimeMillis() - start) / 1000 + "S");
@@ -194,8 +183,8 @@ public class SortingAlgorithm {
     public static void main(String[] args) {
         int[] array = {1, 2, 3, 4, 5, 6, 9, 8, 7};
         SortingAlgorithm sortingAlgorithm = new SortingAlgorithm();
-//        sortingAlgorithm.sortingCheck();
-        System.out.println(Arrays.toString(sortingAlgorithm.mergeSorting1(array)));
+        sortingAlgorithm.sortingCheck();
+//        System.out.println(Arrays.toString(sortingAlgorithm.mergeSorting(array)));
 //        System.out.println(99 / 2);
 //        System.out.println(99 % 2);
     }
