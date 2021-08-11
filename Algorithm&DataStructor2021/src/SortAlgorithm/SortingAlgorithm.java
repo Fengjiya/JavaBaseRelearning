@@ -149,10 +149,11 @@ public class SortingAlgorithm {
     }
 
     public int[] mergeSorting1(int[] noneOrderArray) {
+        /*
+         * 此处必须假如noneOrderArray已经分段有序！！！
+         * */
 //        System.out.println("这是归并排序");
         int middle = noneOrderArray.length / 2;
-
-
         int[] tmpArray = new int[noneOrderArray.length];
 
         int i = 0;
@@ -160,13 +161,7 @@ public class SortingAlgorithm {
         int k = 0;
 
         for (; i < middle & j < noneOrderArray.length; k++) {
-            if (noneOrderArray[i] <= noneOrderArray[j]) {
-                tmpArray[k] = noneOrderArray[i];
-                i++;
-            } else {
-                tmpArray[k] = noneOrderArray[j];
-                j++;
-            }
+            tmpArray[k] = noneOrderArray[i] <= noneOrderArray[j] ? noneOrderArray[i++] : noneOrderArray[j++];
         }
 
         while (i < middle) noneOrderArray[k++] = noneOrderArray[i++];
@@ -197,10 +192,10 @@ public class SortingAlgorithm {
     }
 
     public static void main(String[] args) {
-        int[] array = {3, 2, 1};
+        int[] array = {1, 2, 3, 4, 5, 6, 9, 8, 7};
         SortingAlgorithm sortingAlgorithm = new SortingAlgorithm();
-        sortingAlgorithm.sortingCheck();
-//        System.out.println(Arrays.toString(sortingAlgorithm.mergeSorting(array)));
+//        sortingAlgorithm.sortingCheck();
+        System.out.println(Arrays.toString(sortingAlgorithm.mergeSorting1(array)));
 //        System.out.println(99 / 2);
 //        System.out.println(99 % 2);
     }
